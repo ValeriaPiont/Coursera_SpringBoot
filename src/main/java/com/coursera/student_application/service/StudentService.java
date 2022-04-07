@@ -1,4 +1,9 @@
 package com.coursera.student_application.service;
 
-public class StudentService {
+import com.coursera.student_application.core.Student;
+
+import java.util.Collection;
+
+public interface StudentService {
+    Collection<Student> getAllStudents();
 }
