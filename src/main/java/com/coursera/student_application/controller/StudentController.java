@@ -17,7 +17,7 @@ public class StudentController {
 
     private StudentService studentService;
 
-    @Value("${message}")
+    @Value("${greeting}")
     String message;
 
     @Autowired
