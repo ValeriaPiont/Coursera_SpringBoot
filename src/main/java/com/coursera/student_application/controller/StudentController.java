@@ -42,9 +42,9 @@ public class StudentController {
         return studentService.get(id);
     }
 
-    @GetMapping("/single")
-    public Student getSingleStudent(@RequestParam("id") Optional<Long> optional) {
-        return studentService.get(optional.orElse(0L));
+    @GetMapping(path = "/single", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Student> getSingleStudent(@RequestParam("id") Optional<Long> optional) {
+        return ResponseEntity.ok(studentService.get(optional.orElse(0L)));
     }
 
     @GetMapping("/search/{department}")

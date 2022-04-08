@@ -1,16 +1,21 @@
 package com.coursera.student_application.core;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 @Component
 @NoArgsConstructor
 @ToString
 @Getter
 @Setter
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@XmlRootElement //Maps a class to an XML element.
 public class Student {
 
     private Long studentId;

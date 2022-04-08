@@ -2,12 +2,10 @@ package com.coursera.student_application.controller;
 
 import com.coursera.student_application.core.Student;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -63,6 +61,34 @@ class StudentControllerTest {
         responseEntity.getBody().forEach(p-> {
             System.out.println(p);
         });
+    }
+
+    @Test
+    @DisplayName("Test media type JSON - getSingleStudent() method")
+    void testRequestParamJSON(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("accept", MediaType.APPLICATION_JSON_VALUE);
+        ResponseEntity<String> responseEntity = new RestTemplate()
+                .exchange(URL + "/single?id={id}",
+                        HttpMethod.GET,
+                        new HttpEntity<String>(headers),
+                        String.class,
+                        1);
+        System.out.println(responseEntity.getBody());
+    }
+
+    @Test
+    @DisplayName("Test media type XML - getSingleStudent() method")
+    void testRequestParamXML(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("accept", MediaType.APPLICATION_XML_VALUE);
+        ResponseEntity<String> responseEntity = new RestTemplate()
+                .exchange(URL + "/single?id={id}",
+                        HttpMethod.GET,
+                        new HttpEntity<String>(headers),
+                        String.class,
+                        1);
+        System.out.println(responseEntity.getBody());
     }
 
 }
