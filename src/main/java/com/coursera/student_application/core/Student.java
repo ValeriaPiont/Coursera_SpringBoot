@@ -13,19 +13,21 @@ import org.springframework.stereotype.Component;
 @Setter
 public class Student {
 
-    private String firstname;
+    private Long studentId;
+
+    private String firstName;
 
     private String surname;
 
     private String department;
 
-    public Student(String firstname, String surname) {
-        this.firstname = firstname;
+    public Student(String firstName, String surname) {
+        this.firstName = firstName;
         this.surname = surname;
     }
 
-    public Student(String firstname, String surname, String department) {
-        this.firstname = firstname;
+    public Student(String firstName, String surname, String department) {
+        this.firstName = firstName;
         this.surname = surname;
         this.department = department;
     }

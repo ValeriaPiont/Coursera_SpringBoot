@@ -6,8 +6,10 @@ import com.coursera.student_application.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -47,8 +49,19 @@ public class StudentController {
     }
 
     @GetMapping("/search/{department}")
-    public Collection<Student> getAllStudentsInDepartment(@PathVariable("department") String department, @RequestParam("lastname") Optional<String> optional) {
+    public Collection<Student> getAllStudentsInDepartment(@PathVariable("department") String department, @RequestParam("surname") Optional<String> optional) {
         return studentService.getAllStudentsInDepartment(department, optional.orElse(""));
+    }
+
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Student> addStudent(@RequestBody Student student) {
+        boolean isAdded = studentService.add(student);
+        if(isAdded) {
+            URI uri = URI.create("/college/student/" + student.getStudentId());
+            return ResponseEntity.accepted().location(uri).body(student);
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 }
