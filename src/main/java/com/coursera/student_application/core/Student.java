@@ -17,9 +17,16 @@ public class Student {
 
     private String surname;
 
+    private String department;
+
     public Student(String firstname, String surname) {
         this.firstname = firstname;
         this.surname = surname;
     }
 
+    public Student(String firstname, String surname, String department) {
+        this.firstname = firstname;
+        this.surname = surname;
+        this.department = department;
+    }
 }

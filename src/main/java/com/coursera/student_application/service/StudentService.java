@@ -8,4 +8,7 @@ public interface StudentService {
     Collection<Student> getAllStudents();
 
     Student get(long id);
+
+    Collection<Student> getAllStudentsInDepartment(String department, String lastNamelike);
+
 }

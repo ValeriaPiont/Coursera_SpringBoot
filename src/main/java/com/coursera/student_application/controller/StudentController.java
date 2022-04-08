@@ -42,8 +42,13 @@ public class StudentController {
     }
 
     @GetMapping("/single")
-    public Student getSingleStudent(@RequestParam(value = "id") Optional<Long> optional) {
-        return studentService.get(optional.orElse(1L));
+    public Student getSingleStudent(@RequestParam("id") Optional<Long> optional) {
+        return studentService.get(optional.orElse(0L));
+    }
+
+    @GetMapping("/search/{department}")
+    public Collection<Student> getAllStudentsInDepartment(@PathVariable("department") String department, @RequestParam("lastname") Optional<String> optional) {
+        return studentService.getAllStudentsInDepartment(department, optional.orElse(""));
     }
 
 }
