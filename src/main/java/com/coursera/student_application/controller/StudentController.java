@@ -1,6 +1,7 @@
 package com.coursera.student_application.controller;
 
 import com.coursera.student_application.core.Student;
+import com.coursera.student_application.properties_config.StudentProperties;
 import com.coursera.student_application.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,18 +17,17 @@ import java.util.Collection;
 public class StudentController {
 
     private StudentService studentService;
-
-    @Value("${greeting}")
-    String message;
+    private StudentProperties studentProperties;
 
     @Autowired
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, StudentProperties studentProperties) {
         this.studentService = studentService;
+        this.studentProperties = studentProperties;
     }
 
     @GetMapping("/msg")
-    public String getMassage() {
-        return message;
+    public String getMessage() {
+        return studentProperties.getGreeting();
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
