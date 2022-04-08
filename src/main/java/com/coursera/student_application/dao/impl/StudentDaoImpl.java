@@ -2,6 +2,7 @@ package com.coursera.student_application.dao.impl;
 
 import com.coursera.student_application.core.Student;
 import com.coursera.student_application.dao.StudentDao;
+import com.student.core.College;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -14,9 +15,9 @@ import java.util.Map;
 public class StudentDaoImpl implements StudentDao {
 
     private Map<Long, Student> TEMP_STUDENTS = new HashMap<>(Map.ofEntries(
-            Map.entry(1L, new Student("firstname1", "lastname1", "department1")),
-            Map.entry(2L, new Student("firstname2", "lastname2", "department1")),
-            Map.entry(3L, new Student("firstname3", "lastname3", "department3"))
+            Map.entry(1L, new Student("firstname1", "lastname1", "department1", new College("College", "street", "City", "State"), 123.4)),
+            Map.entry(2L, new Student("firstname2", "lastname2", "department1", new College("College1", "street", "City", "State"), 123.4)),
+            Map.entry(3L, new Student("firstname3", "lastname3", "department3", new College("College1", "street", "City", "State"), 123.4))
     ));
 
     @Override
