@@ -4,7 +4,6 @@ import com.coursera.student_application.core.Student;
 import com.coursera.student_application.properties_config.StudentProperties;
 import com.coursera.student_application.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
