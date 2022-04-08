@@ -6,4 +6,6 @@ import java.util.Collection;
 
 public interface StudentService {
     Collection<Student> getAllStudents();
+
+    Student get(long id);
 }

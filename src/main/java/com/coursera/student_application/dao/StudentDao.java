@@ -1,4 +1,9 @@
 package com.coursera.student_application.dao;
 
-public class StudentDao {
+import com.coursera.student_application.core.Student;
+
+import java.util.Collection;
+
+public interface StudentDao {
+    Collection<Student> getAllStudents();
 }
